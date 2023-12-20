@@ -1,0 +1,8 @@
+name: Common Task Framework
+on: push
+jobs:
+  ctf:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download hidden data
+      run: docker pull islasgeci/hidden_camera_trap_photos:latest
