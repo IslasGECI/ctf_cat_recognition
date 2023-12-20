@@ -13,5 +13,7 @@ jobs:
       run: docker pull islasgeci/hidden_camera_trap_photos:latest
     - run: docker run --name hidden_photos islasgeci/hidden_camera_trap_photos:latest
     - run: docker cp hidden_photos:/camera_trap_photos .
+    - name: Classify photos
+      run: docker run --volume $PWD/camera_trap_photos:/workdir/data/raw/photos --volume $PWD:/workdir/data islasgeci/cat_recognition:latest make detection_with_yolo
     - run: ls
     - run: ls camera_trap_photos
