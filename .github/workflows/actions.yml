@@ -12,7 +12,6 @@ jobs:
     - name: Download hidden data
       run: docker pull islasgeci/hidden_camera_trap_photos:latest
     - run: docker run --name hidden_photos islasgeci/hidden_camera_trap_photos:latest
-    - run: mkdir hidden_photos
-    - run: docker cp hidden_photos:/camera_trap_photos hidden_photos/
+    - run: docker cp hidden_photos:/camera_trap_photos .
     - run: ls
-    - run: ls hidden_photos
+    - run: ls camera_trap_photos
