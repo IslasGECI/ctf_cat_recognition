@@ -16,4 +16,5 @@ jobs:
     - name: Classify photos
       run: docker run --volume $PWD/camera_trap_photos:/workdir/data/raw/photos --volume $PWD:/workdir/data islasgeci/cat_recognition:latest make detection_with_yolo
     - name: Evalute classifier
-      run: docker run --volume $PWD/cat_detected:/workdir/cat_detected --volume $PWD/camera_trap_photos:/workdir/camera_trap_photos  islasgeci/referee_cat_recognition:latest make evaluate_classifier
+      run: docker cp hidden_photos:/data/all_photos.csv .
+    - run: docker run --volume $PWD/all_photos.csv:/workdir/data/all_photos.csv --volume $PWD/cat_detected:/workdir/cat_detected --volume $PWD/camera_trap_photos:/workdir/camera_trap_photos  islasgeci/referee_cat_recognition:latest make evaluate_classifier
