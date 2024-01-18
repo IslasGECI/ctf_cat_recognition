@@ -33,7 +33,12 @@ jobs:
     - run: docker cp hidden_photos:/camera_trap_photos .
     - run: docker cp hidden_photos:/data/all_photos.csv .
     - name: Clone code repository
-      run: git clone https://github.com/IslasGECI/dummy_cat_recognition.git
+      uses: GuillaumeFalourd/clone-github-repo-action@main
+      with:
+        depth: 1
+        branch: 'develop'
+        owner: 'IslasGECI'
+        repository: 'dummy_cat_recognition'
     - name: Build image
       run: docker build --tag islasgeci/dummy_cat_recognition dummy_cat_recognition
     - name: Push image
