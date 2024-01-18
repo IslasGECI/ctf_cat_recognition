@@ -39,6 +39,6 @@ jobs:
     - name: Push image
       run: docker push islasgeci/dummy_cat_recognition
     - name: Classify photos
-      run: docker run --volume $PWD:/workdir islasgeci/dummy_cat_recognition:latest make detections
+      run: docker run --volume $PWD:/workdir islasgeci/dummy_cat_recognition:latest make classification
     - name: Evalute classifier
       run: docker run --volume $PWD/all_photos.csv:/workdir/data/all_photos.csv --volume $PWD/cat_detected:/workdir/cat_detected --volume $PWD/camera_trap_photos:/workdir/camera_trap_photos  islasgeci/referee_cat_recognition:latest make evaluate_classifier
