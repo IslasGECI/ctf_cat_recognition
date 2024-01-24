@@ -1,5 +1,9 @@
 name: Common Task Framework
-on: push
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+
 jobs:
 
   original-yolo:
